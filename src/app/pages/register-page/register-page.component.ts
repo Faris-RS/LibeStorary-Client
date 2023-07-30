@@ -11,4 +11,8 @@ export class RegisterPageComponent {
   toggleOtp() {
     this.registerPage = !this.registerPage;
   }
+
+  verifyOTP() {
+    console.log('verification button clicked');
+  }
 }

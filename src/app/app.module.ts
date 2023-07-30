@@ -10,6 +10,7 @@ import { LoginComponent } from './partials/login/login.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupComponent } from './partials/signup/signup.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { SignupOTPComponent } from './partials/signup-otp/signup-otp.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     LoginPageComponent,
     SignupComponent,
     RegisterPageComponent,
+    SignupOTPComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -29,7 +29,9 @@
         </div>
       </div>
       <ng-template #showOTP>
-        <div>Nothing yet</div>
+        <div class="w-full">
+            <app-signup-otp (verifyOTP)="verifyOTP()"></app-signup-otp>
+        </div>
       </ng-template>
     </div>
   </section>
