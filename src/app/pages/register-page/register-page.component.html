@@ -9,7 +9,7 @@
       style="background-color: #161616"
     >
       <div
-        class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
+        class="absolute lg:hidden -z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center"
         style="
           background-image: url(https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80);
         "
@@ -30,7 +30,7 @@
       </div>
       <ng-template #showOTP>
         <div class="w-full">
-            <app-signup-otp (verifyOTP)="verifyOTP()"></app-signup-otp>
+          <app-signup-otp (verifyOTP)="verifyOTP()"></app-signup-otp>
         </div>
       </ng-template>
     </div>
