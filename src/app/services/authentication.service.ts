@@ -9,7 +9,7 @@ import { UserRegister, UserLogin } from '../models/userModel';
 export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
-  private server: string = 'http://localhost:6335/';
+  private server: string = 'http://localhost:6335/user/';
 
   doLogin(user: UserLogin): Observable<{ token?: string; message: string }> {
     const url = `${this.server}login`;

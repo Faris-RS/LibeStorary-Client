@@ -21,6 +21,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SectionCardComponent } from './components/section-card/section-card.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SectionCardComponent } from './components/section-card/section-card.com
     FooterComponent,
     ProductCardComponent,
     SectionCardComponent,
+    CategoryPageComponent,
   ],
   imports: [
     BrowserModule,
