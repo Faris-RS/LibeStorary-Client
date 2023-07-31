@@ -44,12 +44,21 @@
       [(ngModel)]="confirmPassword"
     ></app-input>
   </div>
-  <div class="pb-2 pt-4 mt-4">
-    <button
-      type="submit"
-      class="uppercase block w-full p-4 text-lg bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
-    >
-      Continue
-    </button>
+  <div *ngIf="loading; else elseBlock" class="pb-2 pt-4 mt-4">
+    <div class="flex items-center justify-center space-x-2">
+      <div class="w-4 h-4 rounded-full animate-pulse bg-indigo-500"></div>
+      <div class="w-4 h-4 rounded-full animate-pulse bg-indigo-500"></div>
+      <div class="w-4 h-4 rounded-full animate-pulse bg-indigo-500"></div>
+    </div>
   </div>
+  <ng-template #elseBlock>
+    <div class="pb-2 pt-4 mt-4">
+      <button
+        type="submit"
+        class="uppercase block w-full p-4 text-lg bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
+      >
+        Register
+      </button>
+    </div>
+  </ng-template>
 </form>

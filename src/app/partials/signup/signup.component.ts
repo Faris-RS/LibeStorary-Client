@@ -1,4 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { UserRegister } from 'src/app/models/userModel';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,26 +11,65 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SignupComponent {
   @Output() signupOTP = new EventEmitter<void>();
+  constructor(
+    private service: AuthenticationService,
+    private toast: HotToastService,
+    private router: Router
+  ) {}
 
   firstName: string = '';
   lastName: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  loading: boolean = false;
 
   onSubmit() {
-    console.log('Form submitted!');
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    console.log('Confirm Passowrd:', this.confirmPassword);
-    console.log('First Name:', this.firstName);
-    console.log('Last Name:', this.lastName);
     if (this.password === this.confirmPassword) {
-      this.ContinueToOTP();
-    }
-  }
+      if (
+        !this.firstName.trim() ||
+        !this.lastName.trim() ||
+        !this.email.trim() ||
+        !this.password.trim()
+      ) {
+        this.toast.error('Please fill every field');
+        return;
+      }
 
-  ContinueToOTP() {
-    this.signupOTP.emit();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(this.email)) {
+        this.toast.error('Please enter a valid email address.');
+        return;
+      }
+
+      try {
+        let user: UserRegister = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+        };
+        this.loading = true;
+        this.service.signupOTP(user).subscribe(
+          (response) => {
+            if (response.status === 200) {
+              this.router.navigate(['/login']);
+            } else {
+              this.toast.error(response.message);
+            }
+          },
+          (error) => {
+            this.toast.error(error);
+          },
+          () => {
+            this.loading = false;
+          }
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      this.toast.error('Passwords do not match');
+    }
   }
 }

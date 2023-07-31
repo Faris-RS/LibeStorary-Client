@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { InputComponent } from './components/input/input.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { TestingPageComponent } from './pages/testing-page/testing-page.component';
@@ -35,7 +39,14 @@ import { SectionCardComponent } from './components/section-card/section-card.com
     ProductCardComponent,
     SectionCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HotToastModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
