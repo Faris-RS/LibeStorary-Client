@@ -12,6 +12,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupComponent } from './partials/signup/signup.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { SignupOTPComponent } from './partials/signup-otp/signup-otp.component';
+import { CollectionComponent } from './components/collection/collection.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { SignupOTPComponent } from './partials/signup-otp/signup-otp.component';
     SignupComponent,
     RegisterPageComponent,
     SignupOTPComponent,
+    CollectionComponent,
+    HomePageComponent,
+    ProductCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
