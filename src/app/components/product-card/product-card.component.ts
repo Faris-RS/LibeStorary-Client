@@ -8,4 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
   @Input() title: string = '';
   @Input() description: string = '';
+  @Input() category: string = '';
+  @Input() author: string = '';
+  @Input() backgroundImageUrl: string = '';
 }

@@ -2,7 +2,7 @@
 <app-header></app-header>
 
 <!-- Hero Section -->
-<header class=" text-white py-20 text-center" style="background-color: #161616">
+<header class="text-white py-20 text-center" style="background-color: #161616">
   <div class="container mx-auto">
     <h1 class="text-4xl md:text-5xl font-semibold mb-4">
       Discover Your Next Book
@@ -20,10 +20,30 @@
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
-      <app-section-card section="Thriller"></app-section-card>
-      <app-section-card section="Horror"></app-section-card>
-      <app-section-card section="Fiction"></app-section-card>
-      <app-section-card section="History"></app-section-card>
+      <app-section-card
+        section="Thriller"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1507415492521-917f60c93bfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+        "
+      ></app-section-card>
+      <app-section-card
+        section="Horror"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1644727036086-896b19d7d565?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+        "
+      ></app-section-card>
+      <app-section-card
+        section="Fiction"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1584385002340-d886f3a0f097?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+        "
+      ></app-section-card>
+      <app-section-card
+        section="History"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1526559881144-9df4bf3eb37a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGhpc3Rvcnl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60'
+        "
+      ></app-section-card>
     </div>
   </div>
 </section>
@@ -38,14 +58,23 @@
       <app-product-card
         title="Hi"
         description="Something about this book should be displayed here or not depending upon the overflow settings"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1690373618614-41a535020206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80'
+        "
       ></app-product-card>
       <app-product-card
         title="Hi"
         description="Something about this book should be displayed here or not depending upon the overflow settings"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1690373618614-41a535020206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80'
+        "
       ></app-product-card>
       <app-product-card
         title="Hi"
         description="Something about this book should be displayed here or not depending upon the overflow settings"
+        [backgroundImageUrl]="
+          'https://images.unsplash.com/photo-1690373618614-41a535020206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80'
+        "
       ></app-product-card>
     </div>
   </div>

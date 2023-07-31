@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SectionCardComponent {
   @Input() section: string = '';
+  @Input() backgroundImageUrl: string = '';
 }
