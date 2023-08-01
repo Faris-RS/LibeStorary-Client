@@ -30,6 +30,7 @@
             author="{{ book.author }}"
             category="{{ book.category }}"
             [backgroundImageUrl]="book.image"
+            (addToCart)="addToCart($event)"
           ></app-product-card>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
-import { LibraryService } from 'src/app/services/library.service';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { LibraryService } from 'src/app/services/library/library.service';
 
 @Component({
   selector: 'app-cart-page',

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Book } from 'src/app/models/bookModel';
-import { LibraryService } from 'src/app/services/library.service';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { LibraryService } from 'src/app/services/library/library.service';
 
 @Component({
   selector: 'app-category-page',
@@ -11,14 +13,20 @@ import { LibraryService } from 'src/app/services/library.service';
 export class CategoryPageComponent {
   constructor(
     private router: ActivatedRoute,
-    private library: LibraryService
+    private library: LibraryService,
+    private cart: CartService,
+    private toast: HotToastService
   ) {}
 
   categoryDescriptions: { [key: string]: string } = {
-    Thriller: 'detective',
-    Horror: 'spooky',
-    Fiction: 'illusion',
-    History: 'past',
+    Thriller:
+      'A genre of fiction that features intense excitement, suspense, and anticipation, often involving crime, mystery, and detective work.',
+    Horror:
+      'A genre of fiction intended to frighten, scare, or disgust readers, often involving supernatural elements, monsters, or psychological terror.',
+    Fiction:
+      'A literary genre that includes imaginative storytelling, invented characters, and events not based on real life.',
+    History:
+      'The study of past events, particularly in human societies, encompassing various subjects such as politics, culture, economics, and social changes.',
   };
 
   category: string = '';
@@ -36,6 +44,21 @@ export class CategoryPageComponent {
   getCategoryBooks(): void {
     this.library.fetchCategoryBooks(this.category).subscribe((result) => {
       this.books = result.data;
+    });
+  }
+
+  addToCart(title: string): void {
+    this.cart.addToCart(title).subscribe((response) => {
+      if (response.status === 400) {
+        console.log('please log in');
+        this.toast.error(response.message);
+      }
+      if (response.status === 305) {
+        this.toast.error(response.message);
+      }
+      if (response.status === 200) {
+        this.toast.success(response.message);
+      }
     });
   }
 }

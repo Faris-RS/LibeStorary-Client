@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -24,6 +24,7 @@ import { SectionCardComponent } from './components/section-card/section-card.com
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { SingleBookPageComponent } from './pages/single-book-page/single-book-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { TokenInterceptor } from './services/interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,13 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
     HttpClientModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

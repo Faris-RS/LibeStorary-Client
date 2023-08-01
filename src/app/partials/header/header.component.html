@@ -4,7 +4,18 @@
     <ul class="flex space-x-4 text-white">
       <li><a href="/home" class="hover:underline">Home</a></li>
       <li><a href="/cart" class="hover:underline">Cart</a></li>
-      <li><a (click)="logout()" class="cursor-pointer hover:underline">Logout</a></li>
+      <div *ngIf="isLogged; else elseBlock">
+        <li>
+          <a (click)="logout()" class="cursor-pointer hover:underline"
+            >Logout</a
+          >
+        </li>
+      </div>
+      <ng-template #elseBlock>
+        <li>
+          <a href="/login" class="cursor-pointer hover:underline">Login</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>

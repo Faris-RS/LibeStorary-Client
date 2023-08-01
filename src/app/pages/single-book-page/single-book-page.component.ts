@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Book } from 'src/app/models/bookModel';
-import { CartService } from 'src/app/services/cart.service';
-import { LibraryService } from 'src/app/services/library.service';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { LibraryService } from 'src/app/services/library/library.service';
 
 @Component({
   selector: 'app-single-book-page',
@@ -13,7 +14,8 @@ export class SingleBookPageComponent {
   constructor(
     private router: ActivatedRoute,
     private library: LibraryService,
-    private cart: CartService
+    private cart: CartService,
+    private toast: HotToastService
   ) {}
 
   title: string = '';
@@ -33,9 +35,17 @@ export class SingleBookPageComponent {
   }
 
   addToCart(): void {
-    const accessToken: string = JSON.stringify(
-      localStorage.getItem('userToken')
-    );
-    this.cart.addToCart(this.title, accessToken).subscribe();
+    this.cart.addToCart(this.title).subscribe((response) => {
+      if (response.status === 400) {
+        console.log('please log in');
+        this.toast.error(response.message);
+      }
+      if (response.status === 305) {
+        this.toast.error(response.message);
+      }
+      if (response.status === 200) {
+        this.toast.success(response.message);
+      }
+    });
   }
 }

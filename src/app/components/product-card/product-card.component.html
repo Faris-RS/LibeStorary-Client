@@ -15,8 +15,9 @@
       </div>
       <div
         class="bg-yellow-500 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full cursor-pointer hover:bg-gray-900"
+        (click)="addBook(title); $event.stopPropagation()"
       >
-        <fa-icon [icon]="addToCart"></fa-icon>
+        <fa-icon [icon]="cart"></fa-icon>
       </div>
     </div>
     <div class="bg-white bg-opacity-95 p-4 flex flex-col mr-4 mb-8">
