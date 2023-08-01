@@ -38,7 +38,6 @@ export class InputComponent implements ControlValueAccessor {
     this.onTouch = fn;
   }
 
-  // The following method is used to propagate changes from the `app-input` component.
   updateValue(event: any): void {
     this.value = event.target.value;
     this.onChange(this.value);

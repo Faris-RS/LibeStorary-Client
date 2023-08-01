@@ -13,4 +13,12 @@ export class LibraryService {
   allBooks(): Observable<any> {
     return this.http.get(`${this.server}`);
   }
+
+  fetchCategoryBooks(category: string): Observable<any> {
+    return this.http.get(`${this.server}category/${category}`);
+  }
+
+  getBookDetails(book: string): Observable<any> {
+    return this.http.get(`${this.server}book/${book}`);
+  }
 }

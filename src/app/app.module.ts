@@ -22,6 +22,8 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SectionCardComponent } from './components/section-card/section-card.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { SingleBookPageComponent } from './pages/single-book-page/single-book-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CategoryPageComponent } from './pages/category-page/category-page.compo
     ProductCardComponent,
     SectionCardComponent,
     CategoryPageComponent,
+    SingleBookPageComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,

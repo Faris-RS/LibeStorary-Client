@@ -24,7 +24,6 @@ export class HomePageComponent {
       this.books = result.data;
       this.books1 = this.books.slice(0, 12);
       this.books2 = this.books.slice(12);
-      console.log(this.books);
     });
   }
 }

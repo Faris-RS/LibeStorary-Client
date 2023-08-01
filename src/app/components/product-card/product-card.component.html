@@ -1,4 +1,7 @@
-<div class="flex justify-center items-center cursor-default">
+<div
+  class="flex justify-center items-center cursor-pointer"
+  [routerLink]="['/book', title]"
+>
   <div
     class="flex flex-col justify-between w-72 sm:w-96 h-96 bg-white bg-center text-gray-800 overflow-hidden"
     [style.backgroundImage]="'url(' + backgroundImageUrl + ')'"
@@ -11,7 +14,7 @@
         {{ category || "Unknown" }}
       </div>
       <div
-        class="bg-indigo-500 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full cursor-pointer hover:bg-gray-900"
+        class="bg-yellow-500 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full cursor-pointer hover:bg-gray-900"
       >
         <fa-icon [icon]="addToCart"></fa-icon>
       </div>
