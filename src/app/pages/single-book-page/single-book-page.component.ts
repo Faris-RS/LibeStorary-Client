@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/bookModel';
+import { CartService } from 'src/app/services/cart.service';
 import { LibraryService } from 'src/app/services/library.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { LibraryService } from 'src/app/services/library.service';
 export class SingleBookPageComponent {
   constructor(
     private router: ActivatedRoute,
-    private library: LibraryService
+    private library: LibraryService,
+    private cart: CartService
   ) {}
 
   title: string = '';
@@ -27,7 +29,13 @@ export class SingleBookPageComponent {
   getBookDetails(): void {
     this.library.getBookDetails(this.title).subscribe((result) => {
       this.details = result.data[0];
-      console.log(this.details);
     });
+  }
+
+  addToCart(): void {
+    const accessToken: string = JSON.stringify(
+      localStorage.getItem('userToken')
+    );
+    this.cart.addToCart(this.title, accessToken).subscribe();
   }
 }
