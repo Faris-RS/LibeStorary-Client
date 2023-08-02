@@ -14,32 +14,41 @@ export class CartService {
     return this.http.get(`${this.server}`);
   }
 
-  addToCart(product: string): Observable<{ status: number; message: string }> {
+  isInCart(book: string): Observable<{ status: number; message: string }> {
     return this.http.get<{ status: number; message: string }>(
-      `${this.server}${product}`
+      `${this.server}checkCart/${book}`
+    );
+  }
+
+  addToCart(product: string): Observable<{ status: number; message: string }> {
+    return this.http.put<{ status: number; message: string }>(
+      `${this.server}addToCart`,
+      { book: product }
     );
   }
 
   doIncrement(
     product: string
   ): Observable<{ status: number; message: string }> {
-    return this.http.get<{ status: number; message: string }>(
-      `${this.server}increment/${product}`
+    return this.http.patch<{ status: number; message: string }>(
+      `${this.server}increment`,
+      { book: product }
     );
   }
 
   doDecrement(
     product: string
   ): Observable<{ status: number; message: string }> {
-    return this.http.get<{ status: number; message: string }>(
-      `${this.server}decrement/${product}`
+    return this.http.patch<{ status: number; message: string }>(
+      `${this.server}decrement`,
+      { book: product }
     );
   }
 
   removeFromCart(
     product: string
   ): Observable<{ status: number; message: string }> {
-    return this.http.get<{ status: number; message: string }>(
+    return this.http.delete<{ status: number; message: string }>(
       `${this.server}delete/${product}`
     );
   }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -7,15 +8,33 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent {
-  cart = faCartPlus;
+  constructor(private cart: CartService) {}
+  add = faCartPlus;
+  check = faCheck;
 
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() category: string = '';
   @Input() author: string = '';
+  @Input() price: number = 0;
   @Input() backgroundImageUrl: string = '';
 
   @Output() addToCart = new EventEmitter<string>();
+  alreadyInCart: boolean = false;
+  cost: number = 0;
+
+  ngOnInit(): void {
+    //   this.isBookInCart(this.title);
+    this.cost = Number(this.price);
+    console.log(this.cost);
+  }
+
+  isBookInCart(title: string): void {
+    this.cart.isInCart(title).subscribe((response) => {
+      if (response.status === 200) this.alreadyInCart = true;
+    });
+  }
+
   addBook(title: string) {
     this.addToCart.emit(title);
   }

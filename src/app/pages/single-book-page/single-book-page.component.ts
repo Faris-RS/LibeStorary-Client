@@ -20,17 +20,25 @@ export class SingleBookPageComponent {
 
   title: string = '';
   details!: Book;
+  alreadyInCart: boolean = false;
 
   ngOnInit(): void {
     let getParamId = this.router.snapshot.paramMap.get('id');
     this.title = JSON.stringify(getParamId);
     this.title = this.title.replace(/['"]+/g, '');
     this.getBookDetails();
+    this.isBookInCart(this.title);
   }
 
   getBookDetails(): void {
     this.library.getBookDetails(this.title).subscribe((result) => {
       this.details = result.data[0];
+    });
+  }
+
+  isBookInCart(title: string): void {
+    this.cart.isInCart(title).subscribe((response) => {
+      if (response.status === 200) this.alreadyInCart = true;
     });
   }
 
@@ -44,6 +52,7 @@ export class SingleBookPageComponent {
       }
       if (response.status === 200) {
         this.toast.success(response.message);
+        this.alreadyInCart = true;
       }
     });
   }

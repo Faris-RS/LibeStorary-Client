@@ -13,12 +13,25 @@
       >
         {{ category || "Unknown" }}
       </div>
+      <!-- <div
+        class="bg-indigo-500 text-white -ml-32 bg-opacity-95 shadow px-2 py-1 flex items-center font-bold text-xs rounded"
+      >
+        &#8377; {{ cost }}
+      </div> -->
       <div
         class="bg-yellow-500 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full cursor-pointer hover:bg-gray-900"
+        *ngIf="!alreadyInCart; else elseBlock"
         (click)="addBook(title); $event.stopPropagation()"
       >
-        <fa-icon [icon]="cart"></fa-icon>
+        <fa-icon [icon]="add"></fa-icon>
       </div>
+      <ng-template #elseBlock>
+        <div
+          class="bg-yellow-500 w-10 h-12 shadow flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full cursor-pointer hover:bg-gray-900"
+        >
+          <fa-icon [icon]="check"></fa-icon>
+        </div>
+      </ng-template>
     </div>
     <div class="bg-white bg-opacity-95 p-4 flex flex-col mr-4 mb-8">
       <h3 class="truncate text-xl font-bold pb-2">

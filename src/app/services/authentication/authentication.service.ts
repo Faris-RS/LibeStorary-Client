@@ -16,7 +16,9 @@ export class AuthenticationService {
     return this.http.post<{ token?: string; message: string }>(url, user);
   }
 
-  signupOTP(user: UserRegister) {
+  signupOTP(
+    user: UserRegister
+  ): Observable<{ status: number; message: string }> {
     const url = `${this.server}signup`;
     return this.http.post<{ status: number; message: string }>(url, user);
   }

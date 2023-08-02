@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { SingleBookPageComponent } from './pages/single-book-page/single-book-page.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', component: TestingPageComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'book/:id', component: SingleBookPageComponent },
-  { path: 'cart', component: CartPageComponent },
+  { path: 'cart', component: CartPageComponent, canActivate: [authGuardGuard] },
   { path: 'category/:id', component: CategoryPageComponent },
 ];
 

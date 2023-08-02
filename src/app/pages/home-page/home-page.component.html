@@ -80,13 +80,17 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       <div *ngFor="let book of books2">
-        <app-product-card
-          title="{{ book.title }}"
-          description="{{ book.description }}"
-          author="{{ book.author }}"
-          category="{{ book.category }}"
-          [backgroundImageUrl]="book.image"
-        ></app-product-card>
+        <div
+          class="hover:shadow-2xl hover:border-yellow-500 border-4 ease-in-out duration-300"
+        >
+          <app-product-card
+            title="{{ book.title }}"
+            description="{{ book.description }}"
+            author="{{ book.author }}"
+            category="{{ book.category }}"
+            [backgroundImageUrl]="book.image"
+          ></app-product-card>
+        </div>
       </div>
     </div>
   </div>

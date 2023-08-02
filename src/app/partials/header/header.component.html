@@ -3,7 +3,9 @@
     <a href="/home" class="text-white text-2xl font-semibold">LibeStorary</a>
     <ul class="flex space-x-4 text-white">
       <li><a href="/home" class="hover:underline">Home</a></li>
-      <li><a href="/cart" class="hover:underline">Cart</a></li>
+      <div *ngIf="isLogged">
+        <li><a href="/cart" class="hover:underline">Cart</a></li>
+      </div>
       <div *ngIf="isLogged; else elseBlock">
         <li>
           <a (click)="logout()" class="cursor-pointer hover:underline"
