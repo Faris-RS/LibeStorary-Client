@@ -1,1 +1,107 @@
-<p>cart-page works!</p>
+<!-- Navigation bar -->
+<app-header></app-header>
+
+<div class="flex flex-col md:flex-row">
+  <!-- Cart Items (left) -->
+  <div class="md:w-3/4 p-4 overflow-y-auto">
+    <div *ngFor="let item of items">
+      <app-cart-card
+        title="{{ item.book.title }}"
+        description="{{ item.book.description }}"
+        author="{{ item.book.author }}"
+        category="{{ item.book.category }}"
+        image="{{ item.book.image }}"
+        price="{{ item.price }}"
+        quantity="{{ item.quantity }}"
+        (increment)="increment($event)"
+        (decrement)="decrement($event)"
+        (remove)="remove($event)"
+      ></app-cart-card>
+    </div>
+  </div>
+
+  <!-- Total (right) -->
+  <div
+    class="md:w-1/4 p-4 bg-white sticky top-0 h-screen flex justify-center items-center"
+  >
+    <!-- <div class=" border-2 border-red-400">
+      <h2 class="text-lg font-semibold">Total</h2>
+    <p>Subtotal: $79.97</p>
+    <p>Tax: $7.20</p>
+    <p class="mt-2 text-xl font-semibold">Total: $87.17</p>
+    <button
+      class="mt-4 w-full bg-indigo-500 text-white py-2 px-4 rounded hover:bg-yellow-500"
+    >
+      Checkout
+    </button>
+    </div> -->
+    <article class="rounded-xl border border-gray-700 p-4">
+      <div class="flex items-center gap-4">
+        <div>
+          <h3 class="text-xl font-medium text-black uppercase">Your cart</h3> <hr>
+
+          <div class="flow-root mt-2">
+            <ul class="-m-1">
+              <li class="p-1 text-sm leading-none text-black">
+                Total: &#8377; {{ total }}
+              </li>
+              <li
+                class="p-1 w-full text-sm leading-none text-black"
+              >
+                Shipping: &#8377; {{shipping}}
+              </li>
+              <li
+                class="p-1 w-full text-sm leading-none text-black"
+              >
+                Discount: &#8377; 0
+              </li>
+              <!-- <hr class="w-full text-black" /> -->
+              <li class="p-1 mt-2 font-bold leading-none text-black">
+                Cart Total: &#8377; {{ total + shipping }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <ul class="mt-4 space-y-2">
+        <li>
+          <a
+            class="block h-full rounded-lg border border-gray-700 p-4 hover:border-yellow-500"
+          >
+            <!-- Coupon input -->
+            <label
+              class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600"
+            >
+              <input
+                type="text"
+                id="coupon"
+                placeholder="Coupon"
+                class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+              />
+
+              <span
+                class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+              >
+                Apply Coupon
+              </span>
+            </label>
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="block h-full rounded-lg border border-gray-700 p-4 hover:bg-indigo-500 cursor-pointer"
+          >
+            <strong class="font-medium text-black">Checkout</strong>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="w-screen">
+  <app-footer></app-footer>
+</div>

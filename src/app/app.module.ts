@@ -25,6 +25,7 @@ import { CategoryPageComponent } from './pages/category-page/category-page.compo
 import { SingleBookPageComponent } from './pages/single-book-page/single-book-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { TokenInterceptor } from './services/interceptor/interceptor.service';
+import { CartCardComponent } from './components/cart-card/cart-card.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TokenInterceptor } from './services/interceptor/interceptor.service';
     CategoryPageComponent,
     SingleBookPageComponent,
     CartPageComponent,
+    CartCardComponent,
   ],
   imports: [
     BrowserModule,

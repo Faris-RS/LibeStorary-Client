@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -17,6 +17,30 @@ export class CartService {
   addToCart(product: string): Observable<{ status: number; message: string }> {
     return this.http.get<{ status: number; message: string }>(
       `${this.server}${product}`
+    );
+  }
+
+  doIncrement(
+    product: string
+  ): Observable<{ status: number; message: string }> {
+    return this.http.get<{ status: number; message: string }>(
+      `${this.server}increment/${product}`
+    );
+  }
+
+  doDecrement(
+    product: string
+  ): Observable<{ status: number; message: string }> {
+    return this.http.get<{ status: number; message: string }>(
+      `${this.server}decrement/${product}`
+    );
+  }
+
+  removeFromCart(
+    product: string
+  ): Observable<{ status: number; message: string }> {
+    return this.http.get<{ status: number; message: string }>(
+      `${this.server}delete/${product}`
     );
   }
 }

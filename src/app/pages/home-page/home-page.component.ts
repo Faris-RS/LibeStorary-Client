@@ -36,7 +36,6 @@ export class HomePageComponent {
   addToCart(title: string): void {
     this.cart.addToCart(title).subscribe((response) => {
       if (response.status === 400) {
-        console.log('please log in');
         this.toast.error(response.message);
       }
       if (response.status === 305) {

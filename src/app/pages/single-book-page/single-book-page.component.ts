@@ -37,7 +37,6 @@ export class SingleBookPageComponent {
   addToCart(): void {
     this.cart.addToCart(this.title).subscribe((response) => {
       if (response.status === 400) {
-        console.log('please log in');
         this.toast.error(response.message);
       }
       if (response.status === 305) {
