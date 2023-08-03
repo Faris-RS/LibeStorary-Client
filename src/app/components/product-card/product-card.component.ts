@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faCartPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { TruncateTextDirective } from 'src/app/directives/truncate-text.directive';
 import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
+  providers: [TruncateTextDirective],
 })
 export class ProductCardComponent {
   constructor(private cart: CartService) {}

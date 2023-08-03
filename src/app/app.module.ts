@@ -26,6 +26,8 @@ import { SingleBookPageComponent } from './pages/single-book-page/single-book-pa
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { TokenInterceptor } from './services/interceptor/interceptor.service';
 import { CartCardComponent } from './components/cart-card/cart-card.component';
+import { ErrorHandlerService } from './services/interceptor/error-handling.service';
+import { TruncateTextDirective } from './directives/truncate-text.directive';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { CartCardComponent } from './components/cart-card/cart-card.component';
     SingleBookPageComponent,
     CartPageComponent,
     CartCardComponent,
+    TruncateTextDirective,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,11 @@ import { CartCardComponent } from './components/cart-card/cart-card.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerService,
       multi: true,
     },
   ],
