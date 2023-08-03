@@ -10,7 +10,7 @@ import { SingleBookPageComponent } from './pages/single-book-page/single-book-pa
 import { authGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
-  { path: '', component: TestingPageComponent },
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'home', component: HomePageComponent },
