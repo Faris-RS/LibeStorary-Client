@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class CartService {
   constructor(private http: HttpClient) {}
 
-  private server: string = 'http://localhost:6335/cart/';
+  private server: string = 'https://libestorary.onrender.com/cart/';
+  // private server: string = 'http://localhost:6335/cart/';
 
   viewCart(): Observable<any> {
     return this.http.get(`${this.server}`);
